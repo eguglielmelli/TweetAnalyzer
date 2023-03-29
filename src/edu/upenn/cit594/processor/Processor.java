@@ -4,7 +4,6 @@ import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.util.State;
 import edu.upenn.cit594.util.Tweet;
 
-import java.io.FileReader;
 import java.util.*;
 
 public class Processor {
