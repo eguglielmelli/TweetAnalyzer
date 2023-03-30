@@ -15,10 +15,9 @@ public class UserInterface {
 
     /**
      * Simple method for displaying our output in the console
-     * @param fileName name of file for reading
      */
-    public void presentData(String fileName) {
-       TreeMap<String,Integer> stateTweetCount = processor.processFileData(fileName);
+    public void presentData() {
+       TreeMap<String,Integer> stateTweetCount = processor.processFileData();
         for(String s : stateTweetCount.keySet()) {
             System.out.println(s + ": " + stateTweetCount.get(s));
         }

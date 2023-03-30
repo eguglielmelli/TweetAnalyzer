@@ -9,15 +9,17 @@ import java.util.Locale;
 public class textFileReader extends fileReader{
 
     private String fileName;
+    private String CSVFileName;
 
     /**
      * Constructor with filename passed as parameter
      * @param fileName
      */
-    public textFileReader(String fileName) {
+    public textFileReader(String fileName,String CSVFileName) {
         this.fileName = fileName;
+        this.CSVFileName = CSVFileName;
+        setCSVFileName(this.CSVFileName);
     }
-
     /**
      * Inherited method for reading the text file
      * @return arraylist of tweets

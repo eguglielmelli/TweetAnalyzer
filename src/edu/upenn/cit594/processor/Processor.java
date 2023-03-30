@@ -68,13 +68,10 @@ public class Processor {
      * @param fileName name of input file that we log to
      * @return treemap of output
      */
-    public TreeMap<String,Integer> processFileData(String fileName) {
+    public TreeMap<String,Integer> processFileData() {
         ArrayList<Tweet> list = reader.readFile();
         LinkedHashSet<Tweet> setOfFluTweets = fluTweetFinder(list);
-        TreeMap<String,State> stateTreeMap = reader.readCSVFile(fileName);
-        if(fileName == null || stateTreeMap == null || setOfFluTweets == null) {
-            return null;
-        }
+        TreeMap<String,State> stateTreeMap = reader.readCSVFile();
         //create the first and only instance of logger in the program
         Logger logger = Logger.getInstance();
 

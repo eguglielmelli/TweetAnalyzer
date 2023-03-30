@@ -58,16 +58,16 @@ public class Main {
         log.setOrChangeDestination(args[2]);
 
         if (args[0].endsWith(".txt")) {
-            fileReader reader = new textFileReader(args[0]);
+            fileReader reader = new textFileReader(args[0],args[1]);
             Processor processor = new Processor(reader);
             UserInterface ui = new UserInterface(processor);
-            ui.presentData(args[1]);
+            ui.presentData();
         }
         else if (args[0].endsWith(".json")) {
-            fileReader reader = new JsonFileReader(args[0]);
+            fileReader reader = new JsonFileReader(args[0],args[1]);
             Processor processor = new Processor(reader);
             UserInterface ui = new UserInterface(processor);
-            ui.presentData(args[1]);
+            ui.presentData();
         }
     }
 }

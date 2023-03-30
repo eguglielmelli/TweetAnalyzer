@@ -12,13 +12,16 @@ import java.util.Locale;
 public class JsonFileReader extends fileReader {
 
     private String fileName;
+    private String CSVFileName;
 
     /**
      * Constructor that creates the json file reader
      * @param fileName
      */
-    public JsonFileReader(String fileName) {
+    public JsonFileReader(String fileName,String CSVFileName) {
         this.fileName = fileName;
+        this.CSVFileName = CSVFileName;
+        setCSVFileName(CSVFileName);
     }
 
     /**

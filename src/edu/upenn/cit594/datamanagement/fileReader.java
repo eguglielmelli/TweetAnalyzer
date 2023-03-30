@@ -12,18 +12,23 @@ import java.util.TreeMap;
  */
 public abstract class fileReader {
 
+    private String CSVFileName;
+
     public abstract ArrayList<Tweet> readFile();
 
+    public void setCSVFileName(String CSVFileName) {
+        this.CSVFileName = CSVFileName;
+    }
     /**
      * method for reading the csv state file
       that will be inherited by sub classes
      * @param fileName name of file
      * @return treemap of states
      */
-    public TreeMap<String, State> readCSVFile(String fileName) {
+    public TreeMap<String, State> readCSVFile() {
         try {
             TreeMap<String, State> treeMap = new TreeMap<>();
-            FileReader fr = new FileReader(fileName);
+            FileReader fr = new FileReader(this.CSVFileName);
             BufferedReader br = new BufferedReader(fr);
             String line;
             while ((line = br.readLine()) != null) {
@@ -39,8 +44,7 @@ public abstract class fileReader {
             br.close();
             return treeMap;
         } catch (IOException e) {
-            System.err.println();
-            e.printStackTrace();
+            System.err.println("CSV file cannot be read.");
         }
         return null;
     }
