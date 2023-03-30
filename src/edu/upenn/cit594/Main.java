@@ -1,6 +1,8 @@
 package edu.upenn.cit594;
 
 import edu.upenn.cit594.datamanagement.JsonFileReader;
+import edu.upenn.cit594.datamanagement.fileReader;
+import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.ui.UserInterface;
 import edu.upenn.cit594.util.State;
 import edu.upenn.cit594.datamanagement.textFileReader;
@@ -52,24 +54,20 @@ public class Main {
             return;
         }
 
-        UserInterface ui = new UserInterface();
-        Processor processor = new Processor();
-        
+        Logger log = Logger.getInstance();
+        log.setOrChangeDestination(args[2]);
+
         if (args[0].endsWith(".txt")) {
-            textFileReader tr = new textFileReader(args[0]);
-            TreeMap<String, State> treeMap = tr.readCSVFile(args[1]);
-            ArrayList<Tweet> list = tr.readFile();
-            LinkedHashSet<Tweet> setOfFluTweets = processor.fluTweetFinder(list);
-            TreeMap<String, Integer> stateTweetCount = processor.processFileData(args[2], treeMap, setOfFluTweets);
-            ui.presentData(stateTweetCount);
+            fileReader reader = new textFileReader(args[0]);
+            Processor processor = new Processor(reader);
+            UserInterface ui = new UserInterface(processor);
+            ui.presentData(args[1]);
         }
         else if (args[0].endsWith(".json")) {
-            JsonFileReader js = new JsonFileReader(args[0]);
-            ArrayList<Tweet> list = js.readFile();
-            TreeMap<String, State> treeMap = js.readCSVFile(args[1]);
-            LinkedHashSet<Tweet> setOfFluTweets = processor.fluTweetFinder(list);
-            TreeMap<String, Integer> stateTweetCount = processor.processFileData(args[2], treeMap, setOfFluTweets);
-            ui.presentData(stateTweetCount);
+            fileReader reader = new JsonFileReader(args[0]);
+            Processor processor = new Processor(reader);
+            UserInterface ui = new UserInterface(processor);
+            ui.presentData(args[1]);
         }
     }
 }

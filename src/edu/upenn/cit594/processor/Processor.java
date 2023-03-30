@@ -9,7 +9,8 @@ import java.util.*;
 public class Processor {
     private fileReader reader;
 
-    public Processor() {
+    public Processor(fileReader reader) {
+        this.reader = reader;
 
     }
 
@@ -65,23 +66,23 @@ public class Processor {
      * This is the main method for this class which includes the actual logging of states and messages, and
      our output of to the console
      * @param fileName name of input file that we log to
-     * @param map treemap of states
-     * @param setOfFluTweets the sets of "flu" tweets
      * @return treemap of output
      */
-    public TreeMap<String,Integer> processFileData(String fileName,TreeMap<String,State> map, LinkedHashSet<Tweet> setOfFluTweets) {
-        if(fileName == null || map == null || setOfFluTweets == null) {
+    public TreeMap<String,Integer> processFileData(String fileName) {
+        ArrayList<Tweet> list = reader.readFile();
+        LinkedHashSet<Tweet> setOfFluTweets = fluTweetFinder(list);
+        TreeMap<String,State> stateTreeMap = reader.readCSVFile(fileName);
+        if(fileName == null || stateTreeMap == null || setOfFluTweets == null) {
             return null;
         }
         //create the first and only instance of logger in the program
         Logger logger = Logger.getInstance();
-        logger.setOrChangeDestination(fileName);
 
         TreeMap<String, Integer> stateTweetCount = new TreeMap<>();
         for (Tweet tweet : setOfFluTweets) {
             //call our helper method for closest state, and as soon as we find it send it to the logger
             //for the txt file output
-            String closestState = findClosestState(tweet.getLatitude(), tweet.getLongitude(), map);
+            String closestState = findClosestState(tweet.getLatitude(), tweet.getLongitude(), stateTreeMap);
             logger.log(closestState + ":" + "\t" + tweet.getMessage());
 
             //this data structure is for console output, we insert them into the treemap so the states are ordered
