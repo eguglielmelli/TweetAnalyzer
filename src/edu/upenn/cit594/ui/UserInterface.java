@@ -1,6 +1,5 @@
 package edu.upenn.cit594.ui;
 
-import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.processor.Processor;
 
 import java.util.TreeMap;
