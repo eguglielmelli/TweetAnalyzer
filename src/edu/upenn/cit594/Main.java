@@ -4,17 +4,12 @@ import edu.upenn.cit594.datamanagement.JsonFileReader;
 import edu.upenn.cit594.datamanagement.fileReader;
 import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.ui.UserInterface;
-import edu.upenn.cit594.util.State;
 import edu.upenn.cit594.datamanagement.textFileReader;
 import edu.upenn.cit594.processor.Processor;
-import edu.upenn.cit594.util.Tweet;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.Locale;
-import java.util.TreeMap;
+
 
 public class Main {
     public static void main(String[] args) throws IOException{

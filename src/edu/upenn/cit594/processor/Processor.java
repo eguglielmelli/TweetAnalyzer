@@ -65,7 +65,6 @@ public class Processor {
     /**
      * This is the main method for this class which includes the actual logging of states and messages, and
      our output of to the console
-     * @param fileName name of input file that we log to
      * @return treemap of output
      */
     public TreeMap<String,Integer> processFileData() {
