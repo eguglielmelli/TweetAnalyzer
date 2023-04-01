@@ -22,5 +22,4 @@ public class UserInterface {
             System.out.println(s + ": " + stateTweetCount.get(s));
         }
     }
-
 }
