@@ -71,7 +71,7 @@ public class Processor {
         ArrayList<Tweet> list = reader.readFile();
         LinkedHashSet<Tweet> setOfFluTweets = fluTweetFinder(list);
         TreeMap<String,State> stateTreeMap = reader.readCSVFile();
-        //create the first and only instance of logger in the program
+        //call our logger as we are going to log tweets once we match states
         Logger logger = Logger.getInstance();
 
         TreeMap<String, Integer> stateTweetCount = new TreeMap<>();
