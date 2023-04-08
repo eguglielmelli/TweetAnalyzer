@@ -51,15 +51,15 @@ public class Processor {
             return null;
         }
         double minDistance = Double.MAX_VALUE;
-        String closestState = "";
+        String stateofFluTweet = "";
         for(String s : states.keySet()) {
             double distance = Math.sqrt(Math.pow(states.get(s).getLongitude()-longitude,2) + Math.pow(states.get(s).getLatitude()-latitude,2));
             if(distance < minDistance) {
                 minDistance = distance;
-                closestState = s;
+                stateofFluTweet = s;
             }
         }
-        return closestState;
+        return stateofFluTweet;
     }
 
     /**

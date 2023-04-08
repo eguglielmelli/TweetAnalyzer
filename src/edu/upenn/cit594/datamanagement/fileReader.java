@@ -22,7 +22,6 @@ public abstract class fileReader {
     /**
      * method for reading the csv state file
       that will be inherited by sub classes
-     * @param fileName name of file
      * @return treemap of states
      */
     public TreeMap<String, State> readCSVFile() {
