@@ -79,7 +79,7 @@ public class Processor {
             //call our helper method for closest state, and as soon as we find it send it to the logger
             //for the txt file output
             String closestState = findClosestState(tweet.getLatitude(), tweet.getLongitude(), stateTreeMap);
-            logger.log(closestState + ":" + "\t" + tweet.getMessage());
+            logger.log(closestState + "\t" + tweet.getMessage());
 
             //this data structure is for console output, we insert them into the treemap so the states are ordered
             if (!stateTweetCount.containsKey(closestState)) {
